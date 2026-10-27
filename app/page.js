@@ -1,20 +1,29 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import { Section } from "../components/Section";
+import About from "../components/About";
+import CaseStudies from "../components/CaseStudies";
+import Experience from "../components/Experience";
+import Skills from "../components/Skills";
+import Education from "../components/Education";
+import Contact from "../components/Contact";
 
-html { scroll-behavior: smooth; }
-body { @apply bg-white text-ink antialiased dark:bg-night dark:text-slate-200; }
-:focus-visible { outline: 2px solid #1a56db; outline-offset: 3px; }
-
-/* The one orchestrated moment: the search query types itself on load. */
-.type { display: inline-block; overflow: hidden; white-space: nowrap; border-right: 2px solid currentColor;
-  width: 0; animation: typing 1.4s steps(17, end) .3s forwards, caret .7s step-end 4; }
-@keyframes typing { to { width: 17ch; } }
-@keyframes caret { 50% { border-color: transparent; } }
-.result { opacity: 0; animation: show .5s ease 1.8s forwards; }
-@keyframes show { to { opacity: 1; } }
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .type { width: 17ch; animation: none; border: 0; }
-  .result { opacity: 1; animation: none; }
+export default function Home() {
+  return (
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <Section id="about" title="About"><About /></Section>
+        <Section id="work" title="Case study: TheController.ai"><CaseStudies /></Section>
+        <Section id="experience" title="Experience"><Experience /></Section>
+        <Section id="skills" title="Skills"><Skills /></Section>
+        <Section id="education" title="Education"><Education /></Section>
+        <Section id="contact" title="Contact"><Contact /></Section>
+      </main>
+      <footer className="mx-auto max-w-5xl px-6 py-10 text-sm text-slate-500">
+        © {new Date().getFullYear()} Mohammed Hazeeb
+      </footer>
+    </>
+  );
 }
